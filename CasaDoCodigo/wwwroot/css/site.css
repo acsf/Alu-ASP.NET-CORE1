@@ -35,3 +35,21 @@ body {
         display: none;
     }
 }
+.left.carousel-control,
+.right.carousel-control {
+    background-image: none;
+}
+
+.navbar-brand{
+    background:url('../images/logo.png');
+    width:215px;
+    height:55px;
+
+}
+
+.navbar-inverse {
+    background-color: orange;
+    /*background-color: #f8965d;*/
+    border-color:#ffffff;
+}
+
