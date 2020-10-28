@@ -10,76 +10,70 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <div class="row">
-
-                <div class="col-md-3">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <img src="~/images/produtos/large_1.jpg" />
-                        </div>
-                        <div class="panel-footer">
-                            <div>Camiseta Error 404</div>
-                            <div>R$ 59,90</div>
-                            <div class="text-center">
-                                @Html.ActionLink("Adicionar", "carrinho", "pedido")
-                                @*<a href="/pedido/carrinho">Adicionar</a>*@
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
+                @for (int i = 0; i < 4; i++)
+                {
                     <div class="col-md-3">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <img src="~/images/produtos/large_2.jpg" />
+                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
                             </div>
                             <div class="panel-footer">
-                                <div>May the code be with you</div>
-                                <div>R$ 59,90</div>
+                                <div>@(Model[i].Nome)</div>
+                                <div>R$ @(Model[i].Preco)</div>
                                 <div class="text-center">
-                                    @*Usando tag helpers*@
-                                    <a asp-action="carrinho">Adicionar</a>
+                                    @Html.ActionLink("Adicionar", "carrinho", "pedido")
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="item">
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_3.jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>Como seria bom</div>
-                                <div>R$ 59,90</div>
-                                <div class="text-center">
-                                    <a asp-action="carrinho">Adicionar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_4.jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>Livro REST</div>
-                                <div>R$ 59,90</div>
-                                <div class="text-center">
-                                    <a asp-action="carrinho">Adicionar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
+
+        <div class="item">
+            <div class="row">
+                @for (int i = 4; i < 8; i++)
+                {
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
+                            </div>
+                            <div class="panel-footer">
+                                <div>@(Model[i].Nome)</div>
+                                <div>R$ @(Model[i].Preco)</div>
+                                <div class="text-center">
+                                    @Html.ActionLink("Adicionar", "carrinho", "pedido")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="row">
+                @for (int i = 8; i < 9; i++)
+                {
+                    <div class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
+                            </div>
+                            <div class="panel-footer">
+                                <div>@(Model[i].Nome)</div>
+                                <div>R$ @(Model[i].Preco)</div>
+                                <div class="text-center">
+                                    @Html.ActionLink("Adicionar", "carrinho", "pedido")
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
     </div>
 
     <!-- Controls -->

@@ -2,6 +2,8 @@
     ViewData["Title"] = "Carrinho de Compras";
 }
 
+@model List<ItemPedido>
+
 <h3>Meu Carrinho</h3>
 
 <div class="panel panel-default">
@@ -25,21 +27,22 @@
     </div>
 
     <div class="panel-body">
-
-        <div class="row">
-            <div class="col-md-3">
-                <img src="~/images/produtos/small_4.jpg" />
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="~/images/produtos/small_@(item.Id).jpg" />
+                </div>
+                <div class="col-md-3">@item.Produto.Nome</div>
+                <div class="col-md-2">R$ @item.PrecoUnitario</div>
+                <div class="col-md-2">@item.Quantidade</div>
+                <div class="col-md-2">
+                    <span class="pull-right">
+                        R$ @item.Subtotal
+                    </span>
+                </div>
             </div>
-            <div class="col-md-3">REST</div>
-            <div class="col-md-2">R$ 70,00</div>
-            <div class="col-md-2">4</div>
-            <div class="col-md-2">
-                <span class="pull-right">
-                    R$ 210,00
-                </span>
-            </div>
-        </div>
-
+        }
     </div>
 
     <div class="panel-footer">
