@@ -59,3 +59,8 @@ body {
     /*background-color: #f8965d;*/
     border-color: #ffffff;
 }
+
+.row-center {
+    display: flex;
+    align-items: center;
+}
