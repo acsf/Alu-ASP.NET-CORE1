@@ -15,20 +15,28 @@ namespace CasaDoCodigo.Models
 
         public decimal PrecoUnitario { get; private set; }
 
-        public decimal Subtotal { get
+        public decimal Subtotal
+        {
+            get
 
-            { 
+            {
                 return Quantidade * PrecoUnitario;
             }
         }
 
-        public ItemPedido(int id,Produto produto,int quantidade)
+        //Encadeamento de construtores com this
+        public ItemPedido(int id, Produto produto, int quantidade)
+            : this(produto, quantidade)
         {
             this.Id = id;
+        }
+
+        //Construtor para ItensPedido-Carrinho
+        public ItemPedido(Produto produto, int quantidade)
+        {
             this.Produto = produto;
             this.Quantidade = quantidade;
             this.PrecoUnitario = produto.Preco;
-
         }
 
     }

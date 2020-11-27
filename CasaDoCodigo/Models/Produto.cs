@@ -22,9 +22,16 @@ namespace CasaDoCodigo.Models
         /// </summary>
         public decimal Preco { get; private set; }
 
+        //Encadeamento de construtores com this
         public Produto(int id, string nome, decimal preco)
+            : this(nome, preco)
         {
             this.Id = id;
+        }
+
+        //Construtor para ItensPedido-Carrinho
+        public Produto(string nome, decimal preco)
+        {
             this.Nome = nome;
             this.Preco = preco;
         }

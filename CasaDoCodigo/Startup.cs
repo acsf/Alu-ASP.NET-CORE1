@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace CasaDoCodigo
 {
@@ -33,6 +34,14 @@ namespace CasaDoCodigo
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //Conexão com o banco de dados SQL Server
+            //string connectionString = Configuration.GetSection("ConnectionStrings").GetValue<string>("DefaultConnection");
+
+            //services.AddDbContext<Contexto>(options => options.UseSqlServer(connectionString));
+
+            //Outra forma de conexão com o banco de dados
+            services.AddDbContext<Contexto>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
