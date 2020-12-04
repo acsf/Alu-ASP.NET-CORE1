@@ -22,6 +22,11 @@ namespace CasaDoCodigo.Models
         /// </summary>
         public decimal Preco { get; private set; }
 
+        public Produto()
+        {
+
+        }
+
         //Encadeamento de construtores com this
         public Produto(int id, string nome, decimal preco)
             : this(nome, preco)

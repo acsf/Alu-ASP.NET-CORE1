@@ -24,6 +24,11 @@ namespace CasaDoCodigo.Models
             }
         }
 
+        public ItemPedido()
+        {
+
+        }
+
         //Encadeamento de construtores com this
         public ItemPedido(int id, Produto produto, int quantidade)
             : this(produto, quantidade)

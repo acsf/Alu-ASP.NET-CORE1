@@ -2,77 +2,49 @@
     ViewData["Title"] = "Carrossel";
 }
 
+@model List<Produto>
+
 <h3>Catálogo</h3>
 
 <div id="my-carousel" class="carousel slide" data-ride="carousel">
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="row">
-                @for (int i = 0; i < 4; i++)
-                {
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>@(Model[i].Nome)</div>
-                                <div>R$ @(Model[i].Preco)</div>
-                                <div class="text-center">
-                                    @Html.ActionLink("Adicionar", "carrinho", "pedido")
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
+        @{
+            const int TAMANHO_PAGINA = 4;
+            int numPaginas =(int)Math.Ceiling((double)Model.Count() / TAMANHO_PAGINA);
+        }
 
-        <div class="item">
-            <div class="row">
-                @for (int i = 4; i < 8; i++)
-                {
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>@(Model[i].Nome)</div>
-                                <div>R$ @(Model[i].Preco)</div>
-                                <div class="text-center">
-                                    @Html.ActionLink("Adicionar", "carrinho", "pedido")
+        @for (int pagina = 0; pagina < numPaginas; pagina++)
+        {
+            <div class="item @(pagina == 0 ? "active":"")">
+                <div class="row">
+                    @{ 
+                        var produtoPagina = Model
+                            .Skip(TAMANHO_PAGINA * pagina)
+                            .Take(TAMANHO_PAGINA);
+                    }
+                    @foreach (Produto produto in produtoPagina)
+                    {
+                        <div class="col-md-3">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <img src="~/images/produtos/large_@(produto.Id).jpg" />
+                                </div>
+                                <div class="panel-footer">
+                                    <div>@(produto.Nome)</div>
+                                    <div>R$ @(produto.Preco)</div>
+                                    <div class="text-center">
+                                        @Html.ActionLink("Adicionar", "carrinho", "pedido")
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }
+                    }
+                </div>
             </div>
-        </div>
 
-        <div class="item">
-            <div class="row">
-                @for (int i = 8; i < 9; i++)
-                {
-                    <div class="col-md-3">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <img src="~/images/produtos/large_@(Model[i].Id).jpg" />
-                            </div>
-                            <div class="panel-footer">
-                                <div>@(Model[i].Nome)</div>
-                                <div>R$ @(Model[i].Preco)</div>
-                                <div class="text-center">
-                                    @Html.ActionLink("Adicionar", "carrinho", "pedido")
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
+        }
 
     </div>
 
